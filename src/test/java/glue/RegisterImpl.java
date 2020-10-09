@@ -8,18 +8,21 @@ import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.*;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.DriverFactory;
 
 
 public class RegisterImpl {
+    // Variables related to driver
+    // Driver itself is in a separate variable for quick access other parts should be
+    // used from within driverFactory
     private WebDriver driver;
     private DriverFactory driverFactory;
+    // Variables containing page object models
     private HomePage homePage;
     private AccountMainPage accountMainPage;
     private SignInPage signInPage;
     private RegisterPage registerPage;
-    private WebDriverWait wait;
+    // Valid choices for used browser: chrome or ff
     private String browser = "chrome";
 
     public void changeBrowser(String browser){
@@ -30,15 +33,14 @@ public class RegisterImpl {
 
     @Before
     public void testSetUp() {
+        // Instantiates driver objects and main page object
         this.driverFactory = new DriverFactory();
         this.driver = driverFactory.open(browser);
         this.homePage = new HomePage(driver, driverFactory);
     }
 
-    //     Given User is on the main page
     @Given("^User is on the main page$")
     public void User_is_on_the_main_page() {
-        // Open the main website
         this.homePage.OpenHomePage();
     }
 
@@ -56,6 +58,8 @@ public class RegisterImpl {
 
     @And("^Enters as personal information (.*) and (.*)$")
     public void enter_personal_information(String FirstName, String LastName) {
+        // Registration form is divided into two parts: personal data and address details
+        // First part beside filling data also invokes the page objects and checks if page is correctly loaded
         this.registerPage = new RegisterPage(this.driver, this.driverFactory);
         this.registerPage.ConfirmRegisterPageLoaded();
         this.registerPage.FillFirstPart(FirstName, LastName);
@@ -73,6 +77,7 @@ public class RegisterImpl {
 
     @Then("^'Welcome to your account.' message is visible$")
     public void welcome_message_is_visible() {
+        // If the account was successfully created, new page should be opened with "welcome" message
         this.accountMainPage = new AccountMainPage(this.driver, this.driverFactory);
         this.accountMainPage.ConfirmAccoutPageLoaded();
         this.accountMainPage.ConfirmThatWelcomeMessageCorrect();

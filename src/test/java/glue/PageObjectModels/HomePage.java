@@ -4,9 +4,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import utils.DriverFactory;
 
-public class HomePage {
+public class HomePage extends CommonParts {
+    // Locators and URL
     private String SignInClassName = "login";
     private String HomePageURL = "http://automationpractice.com/index.php";
+    // Common part - driver reference
     private WebDriver driver;
     private DriverFactory driverFactory;
 

@@ -6,7 +6,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import utils.DriverFactory;
 
-public class RegisterPage {
+public class RegisterPage extends CommonParts {
     //    First part  of the registration form paths
     private String GenderID = "id_gender1";
     private String GenderXpath = "//*[@id=\"id_gender1\"]";
@@ -50,6 +50,7 @@ public class RegisterPage {
         this.driver.findElement(By.xpath(LastNameXpath_1)).sendKeys(LastName);
         this.driver.findElement(By.xpath(PasswordXpath)).sendKeys(Password);
 
+        // Birth dates are chosen from the drop downs
         Select birth_day = new Select(this.driver.findElement(By.xpath(BirthDayXpath)));
         birth_day.selectByIndex(BirthDayIndexChoice);
         Select birth_month = new Select(this.driver.findElement(By.xpath(BrithMonthXpath)));
@@ -57,6 +58,7 @@ public class RegisterPage {
         Select birth_year = new Select(this.driver.findElement(By.xpath(BirthYearXpath)));
         birth_year.selectByIndex(BirthYearIndexChoice);
 
+        // Newsletter agreement is a check button
         this.driver.findElement(By.xpath(NewsletterTickXpath)).click();
     }
 
@@ -68,6 +70,7 @@ public class RegisterPage {
         this.driver.findElement(By.id(PostcodeID)).sendKeys(Zip);
         this.driver.findElement(By.id(PhoneMobileID)).sendKeys(Phone);
 
+        // Country and state is chosen from the drop downs
         Select country = new Select(this.driver.findElement(By.id(CountryID)));
         country.selectByVisibleText(CountryChoice);
         Select state = new Select(this.driver.findElement(By.id(StateID)));

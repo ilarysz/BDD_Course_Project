@@ -5,9 +5,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import utils.DriverFactory;
 
-public class SignInPage {
+public class SignInPage extends CommonParts {
+    // Page locators
     private String EmailCreateID = "email_create";
     private String SubmitID = "SubmitCreate";
+    //    Common part - driver reference
     private WebDriver driver;
     private DriverFactory driverFactory;
 
