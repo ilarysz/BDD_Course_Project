@@ -62,12 +62,15 @@ public class RegisterImpl {
         // First part beside filling data also invokes the page objects and checks if page is correctly loaded
         this.registerPage = new RegisterPage(this.driver, this.driverFactory);
         this.registerPage.ConfirmRegisterPageLoaded();
-        this.registerPage.FillFirstPart(FirstName, LastName);
+        this.registerPage.FillBasicPersonalData(FirstName, LastName);
+        this.registerPage.ChooseBirthData();
+        this.registerPage.NewsletterSignUp();
         }
 
     @And("^Enters address information (.*) (.*) (.*) (.*) (.*) (.*)$")
     public void enter_address_information(String FirstName, String LastName, String Address, String City, String Zip, String Phone) {
-        this.registerPage.FillSecondPart(FirstName, LastName, Address, City, Zip, Phone);
+        this.registerPage.FillAdressData(FirstName, LastName, Address, City, Zip, Phone);
+        this.registerPage.ChooseCountryAndState();
     }
 
     @And("^Clicks register$")

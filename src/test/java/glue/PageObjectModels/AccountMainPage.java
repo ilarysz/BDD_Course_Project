@@ -7,9 +7,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import utils.DriverFactory;
 
 public class AccountMainPage extends CommonParts {
-    // Page locators
-    private String MainColumnXpath = "//*[@id=\"center_column\"]/p";
-    private String WelcomeMessageXpath = "//*[@id=\"center_column\"]/p";
+    private String MainColumnXpath = "//*[@id=\"center_column\"]/p",
+            WelcomeMessageXpath = "//*[@id=\"center_column\"]/p";
     // Typed or checked constants
     private String WelcomeMessageText = "Welcome to your account. Here you can manage all of your personal information and orders.";
     // Common part - driver reference

@@ -12,4 +12,4 @@ Feature: Test if it is possible to register a new account
 
     Examples:
       | Email | FirstName | LastName | Address | City | Zip | Phone |
-      | qub48339@eoopy.com | Adam | Malysz | Poziomkowa | Wisla | 12345 | 123456789 |
+      | qub48344@eoopy.com | Adam | Malysz | Poziomkowa | Wisla | 12345 | 123456789 |
